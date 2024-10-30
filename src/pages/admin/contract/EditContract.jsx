@@ -21,7 +21,6 @@ const EditContract = () => {
 
   const handleConfirm = (event) => {
     event.preventDefault();
-
     console.log("Contract updated:", {
       name,
       employee,
@@ -31,7 +30,6 @@ const EditContract = () => {
       issuedDate,
       endDate,
     });
-
     navigate("/list-employee-contract");
   };
 
@@ -40,18 +38,21 @@ const EditContract = () => {
   };
 
   return (
-    <div className="homepage">
-      <div className="main-layout">
-        <div className="right-section">
-          <HeaderAdmin /> {}
-          <div className="tab-header">
-            <span className="tab-title">Edit Contract</span>
+    <div className="edit-contract-homepage">
+      <div className="edit-contract-main-layout">
+        <div className="edit-contract-right-section">
+          <HeaderAdmin />
+          <div className="edit-contract-tab-header">
+            <span className="edit-contract-tab-title">Edit Contract</span>
           </div>
-          <div className="content">
-            <div className="form-container">
-              <p className="form-title">Edit contract</p>
-              <form className="contract-form" onSubmit={handleConfirm}>
-                <div className="form-group">
+          <div className="edit-contract-content">
+            <div className="edit-contract-form-container">
+              <p className="edit-contract-form-title">Edit Contract</p>
+              <form
+                className="edit-contract-contract-form"
+                onSubmit={handleConfirm}
+              >
+                <div className="edit-contract-form-group">
                   <label htmlFor="name">Name:</label>
                   <input
                     type="text"
@@ -62,7 +63,7 @@ const EditContract = () => {
                   />
                 </div>
 
-                <div className="form-group">
+                <div className="edit-contract-form-group">
                   <label htmlFor="employee">Employee:</label>
                   <input
                     type="text"
@@ -73,7 +74,7 @@ const EditContract = () => {
                   />
                 </div>
 
-                <div className="form-group">
+                <div className="edit-contract-form-group">
                   <label htmlFor="fileContract">File Contract:</label>
                   <input
                     type="file"
@@ -84,7 +85,7 @@ const EditContract = () => {
                   />
                 </div>
 
-                <div className="form-group">
+                <div className="edit-contract-form-group">
                   <label htmlFor="companyMaintenance">
                     Company Maintenance:
                   </label>
@@ -97,7 +98,7 @@ const EditContract = () => {
                   />
                 </div>
 
-                <div className="form-group">
+                <div className="edit-contract-form-group">
                   <label htmlFor="issuedBy">Issued By:</label>
                   <input
                     type="text"
@@ -108,7 +109,7 @@ const EditContract = () => {
                   />
                 </div>
 
-                <div className="form-group">
+                <div className="edit-contract-form-group">
                   <label htmlFor="issuedDate">Issued Date:</label>
                   <input
                     type="date"
@@ -118,7 +119,7 @@ const EditContract = () => {
                   />
                 </div>
 
-                <div className="form-group">
+                <div className="edit-contract-form-group">
                   <label htmlFor="endDate">End Date:</label>
                   <input
                     type="date"
@@ -128,15 +129,15 @@ const EditContract = () => {
                   />
                 </div>
 
-                <div className="button-group">
+                <div className="edit-contract-button-group">
                   <button
                     type="button"
-                    className="btn-return"
+                    className="edit-contract-btn-return"
                     onClick={handleReturn}
                   >
                     Return
                   </button>
-                  <button type="submit" className="btn-confirm">
+                  <button type="submit" className="edit-contract-btn-confirm">
                     Confirm
                   </button>
                 </div>

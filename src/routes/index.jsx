@@ -62,6 +62,7 @@ export const customerRoutes = [
   { path: "/holiday", component: ViewHolidays },
   { path: "/rent-anapartment", component: RentAnApartment },
   { path: "/view-fines-list", component: ViewFinesList },
+  { path: "/fine-detail/:id", component: FineDetail },
   { path: "/edit-profile", component: Profile },
   { path: "/registerUtil", component: UtilityList },
   { path: "/complaint-list", component: ComplaintList },

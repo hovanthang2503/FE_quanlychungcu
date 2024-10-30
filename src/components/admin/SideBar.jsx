@@ -72,6 +72,11 @@ function SideBarAdmin() {
               icon: <RightOutlined />,
               label: "List employee-contact",
             },
+            {
+              key: "add-contract",
+              icon: <RightOutlined />,
+              label: "Add Contract",
+            },
           ],
         },
         {

@@ -35,23 +35,25 @@ const AddContract = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Dữ liệu hợp đồng mới:", contractData);
-
     navigate("/list-employee-contract");
   };
 
   return (
-    <div className="homepage">
-      <div className="main-layout">
-        <div className="right-section">
-          <HeaderAdmin /> {}
-          <div className="tab-header">
-            <span className="tab-title">Add Contract</span>
+    <div className="add-contract-homepage">
+      <div className="add-contract-main-layout">
+        <div className="add-contract-right-section">
+          <HeaderAdmin />
+          <div className="add-contract-tab-header">
+            <span className="add-contract-tab-title">Add Contract</span>
           </div>
-          <div className="content">
-            <div className="form-container">
-              <p className="form-title">New Contract</p>
-              <form className="contract-form" onSubmit={handleSubmit}>
-                <div className="form-group">
+          <div className="add-contract-content">
+            <div className="add-contract-form-container">
+              <p className="add-contract-form-title">New Contract</p>
+              <form
+                className="add-contract-contract-form"
+                onSubmit={handleSubmit}
+              >
+                <div className="add-contract-form-group">
                   <label htmlFor="name">Name:</label>
                   <input
                     type="text"
@@ -64,7 +66,7 @@ const AddContract = () => {
                   />
                 </div>
 
-                <div className="form-group">
+                <div className="add-contract-form-group">
                   <label htmlFor="employee">Employee:</label>
                   <input
                     type="text"
@@ -77,7 +79,7 @@ const AddContract = () => {
                   />
                 </div>
 
-                <div className="form-group">
+                <div className="add-contract-form-group">
                   <label htmlFor="fileContract">File Contract:</label>
                   <input
                     type="file"
@@ -88,7 +90,7 @@ const AddContract = () => {
                   />
                 </div>
 
-                <div className="form-group">
+                <div className="add-contract-form-group">
                   <label htmlFor="companyMaintenance">
                     Company Maintenance:
                   </label>
@@ -102,7 +104,7 @@ const AddContract = () => {
                   />
                 </div>
 
-                <div className="form-group">
+                <div className="add-contract-form-group">
                   <label htmlFor="issuedBy">Issued By:</label>
                   <input
                     type="text"
@@ -114,7 +116,7 @@ const AddContract = () => {
                   />
                 </div>
 
-                <div className="form-group">
+                <div className="add-contract-form-group">
                   <label htmlFor="issuedDate">Issued Date:</label>
                   <input
                     type="date"
@@ -125,7 +127,7 @@ const AddContract = () => {
                   />
                 </div>
 
-                <div className="form-group">
+                <div className="add-contract-form-group">
                   <label htmlFor="endDate">End Date:</label>
                   <input
                     type="date"
@@ -136,15 +138,15 @@ const AddContract = () => {
                   />
                 </div>
 
-                <div className="button-group">
+                <div className="add-contract-button-group">
                   <button
                     type="button"
-                    className="btn-return"
+                    className="add-contract-btn-return"
                     onClick={() => navigate("/list-employee-contract")}
                   >
                     Return
                   </button>
-                  <button type="submit" className="btn-confirm">
+                  <button type="submit" className="add-contract-btn-confirm">
                     Confirm
                   </button>
                 </div>
