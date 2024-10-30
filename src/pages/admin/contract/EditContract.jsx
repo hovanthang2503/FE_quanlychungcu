@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import HeaderAdmin from "../../../components/admin/Header.jsx";
 import "./EditContract.css";
 
@@ -11,26 +11,74 @@ const EditContract = () => {
   const [companyMaintenance, setCompanyMaintenance] = useState("");
   const [issuedBy, setIssuedBy] = useState("");
   const [issuedDate, setIssuedDate] = useState("");
+  const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
 
   const navigate = useNavigate();
+  const { id } = useParams(); // Lấy ID từ URL
+
+  // Fetch dữ liệu hợp đồng hiện tại từ MockAPI khi component được render
+  useEffect(() => {
+    const fetchContract = async () => {
+      try {
+        const response = await fetch(
+          `https://6711ba674eca2acdb5f58cfd.mockapi.io/api/employeesmanagement/${id}`
+        );
+        const data = await response.json();
+
+        setName(data.name);
+        setEmployee(data.employee);
+        setCompanyMaintenance(data.companyMaintenance);
+        setIssuedBy(data.issuedby);
+        setIssuedDate(data.issueddate ? data.issueddate.slice(0, 10) : "");
+        setStartDate(data.startdate ? data.startdate.slice(0, 10) : "");
+        setEndDate(data.enddate ? data.enddate.slice(0, 10) : "");
+      } catch (error) {
+        console.error("Lỗi khi lấy dữ liệu hợp đồng:", error);
+      }
+    };
+
+    fetchContract();
+  }, [id]);
 
   const handleFileChange = (event) => {
     setFileContract(event.target.files[0]);
   };
 
-  const handleConfirm = (event) => {
+  const handleConfirm = async (event) => {
     event.preventDefault();
-    console.log("Contract updated:", {
+
+    const updatedData = {
       name,
       employee,
-      fileContract,
       companyMaintenance,
       issuedBy,
       issuedDate,
+      startDate,
       endDate,
-    });
-    navigate("/list-employee-contract");
+    };
+
+    try {
+      const response = await fetch(
+        `https://6711ba674eca2acdb5f58cfd.mockapi.io/api/employeesmanagement/${id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(updatedData),
+        }
+      );
+
+      if (response.ok) {
+        console.log("Hợp đồng đã được cập nhật:", updatedData);
+        navigate("/list-employee-contract"); // Điều hướng về trang danh sách hợp đồng sau khi cập nhật
+      } else {
+        console.error("Cập nhật hợp đồng thất bại");
+      }
+    } catch (error) {
+      console.error("Lỗi khi cập nhật hợp đồng:", error);
+    }
   };
 
   const handleReturn = () => {
@@ -116,6 +164,16 @@ const EditContract = () => {
                     id="issuedDate"
                     value={issuedDate}
                     onChange={(e) => setIssuedDate(e.target.value)}
+                  />
+                </div>
+
+                <div className="edit-contract-form-group">
+                  <label htmlFor="startDate">Start Date:</label>
+                  <input
+                    type="date"
+                    id="startDate"
+                    value={startDate}
+                    onChange={(e) => setStartDate(e.target.value)}
                   />
                 </div>
 

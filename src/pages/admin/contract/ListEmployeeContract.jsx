@@ -64,7 +64,7 @@ const ListEmployeeContract = () => {
     <div className="homepage">
       <div className="main-layout">
         <div className="right-section">
-          <HeaderAdmin /> {}
+          <HeaderAdmin />
           <div className="content">
             <div className="tab-header">
               <span className="tab-title">Employee Contract List</span>
@@ -110,10 +110,11 @@ const ListEmployeeContract = () => {
                         <td>{employee.id}</td>
                         <td>{employee.name}</td>
                         <td>{employee.ssn}</td>
-                        <td>{employee.issueddate}</td>
-                        <td>{employee.issuedby}</td>
-                        <td>{employee.startdate}</td>
-                        <td>{employee.enddate}</td>
+                        {/* Kiểm tra và hiển thị cả hai trường issuedDate và issueddate */}
+                        <td>{employee.issuedDate || employee.issueddate}</td>
+                        <td>{employee.issuedBy || employee.issuedby}</td>
+                        <td>{employee.startDate || employee.startdate}</td>
+                        <td>{employee.endDate || employee.enddate}</td>
                         <td>
                           <Icon
                             icon={editIcon}

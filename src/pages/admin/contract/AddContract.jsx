@@ -32,10 +32,34 @@ const AddContract = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Dữ liệu hợp đồng mới:", contractData);
-    navigate("/list-employee-contract");
+
+    // Tạo bản sao của contractData và loại bỏ fileContract (nếu API không hỗ trợ tải tệp)
+    const dataToSend = { ...contractData };
+    delete dataToSend.fileContract; // Xóa thuộc tính fileContract nếu không cần thiết
+
+    try {
+      const response = await fetch(
+        "https://6711ba674eca2acdb5f58cfd.mockapi.io/api/employeesmanagement",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(dataToSend),
+        }
+      );
+
+      if (response.ok) {
+        console.log("Dữ liệu hợp đồng mới đã được thêm:", dataToSend);
+        navigate("/list-employee-contract"); // Điều hướng về trang danh sách hợp đồng
+      } else {
+        console.error("Thêm hợp đồng thất bại");
+      }
+    } catch (error) {
+      console.error("Lỗi:", error);
+    }
   };
 
   return (
