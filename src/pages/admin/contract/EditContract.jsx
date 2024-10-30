@@ -7,6 +7,7 @@ import "./EditContract.css";
 const EditContract = () => {
   const [name, setName] = useState("");
   const [employee, setEmployee] = useState("");
+  // eslint-disable-next-line no-unused-vars
   const [fileContract, setFileContract] = useState(null);
   const [companyMaintenance, setCompanyMaintenance] = useState("");
   const [issuedBy, setIssuedBy] = useState("");
